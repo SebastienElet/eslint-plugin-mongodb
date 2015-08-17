@@ -1,0 +1,38 @@
+{
+  "name": "eslint-plugin-mongodb",
+  "version": "0.0.0",
+  "description": "Lint your MongoDB queries.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "mocha **/*.mocha.js",
+    "lint": "eslint **/*.js",
+    "lintconfig": "sf-lint-sync",
+    "cli": "env NPM_RUN_CLI=1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nfroidure/eslint-plugin-mongodb"
+  },
+  "keywords": [
+    "eslint",
+    "eslintplugin",
+    "mongodb",
+    "query",
+    "queries",
+    "mongo"
+  ],
+  "author": "Nicolas Froidure",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nfroidure/eslint-plugin-mongoquery/issues"
+  },
+  "homepage": "https://github.com/nfroidure/eslint-plugin-mongoquery",
+  "peerDependencies": {
+    "eslint": ">=0.8.0"
+  },
+  "devDependencies": {
+    "eslint": "^1.1.0",
+    "eslint-tester": "^0.8.2",
+    "sf-lint": "^1.0.2"
+  }
+}
