@@ -21,15 +21,17 @@ function eMQCheckRenameUpdates(context) {
             }
             if('$rename' === property.key.name) {
               if('ObjectExpression' !== property.value.type) {
-                context.report(node, 'Expected ' + property.key.name + ' operator value to be an object.');
+                context.report(node, 'Expected ' + property.key.name +
+                  ' operator value to be an object.');
                 return false;
               }
               return property.value.properties.every(function(propertyNode) {
-                if((!nodeIsDynamic(propertyNode.value)) &&
-                  !nodeWillBeString(propertyNode.value)) {
-                    context.report(node, property.key.name + ' operator require strings (key: ' + propertyNode.key.name + ').');
-                    return false;
-                  }
+                if((!utils.nodeIsDynamic(propertyNode.value)) &&
+                  !utils.nodeWillBeString(propertyNode.value)) {
+                  context.report(node, property.key.name +
+                    ' operator require strings (key: ' + propertyNode.key.name + ').');
+                  return false;
+                }
                 return true;
               });
             }
@@ -42,36 +44,6 @@ function eMQCheckRenameUpdates(context) {
 
     },
   };
-}
-
-function nodeIsDynamic(node) {
-  if('Literal' === node.type) {
-    return false;
-  }
-  if('UnaryExpression' === node.type) {
-    return nodeIsDynamic(node.argument);
-  }
-  if('BinaryExpression' === node.type) {
-    return nodeIsDynamic(node.left) || nodeIsDynamic(node.right);
-  }
-  if('ObjectExpression' === node.type) {
-    return node.properties.every(nodeIsDynamic);
-  }
-  if('Property' === node.type) {
-    return nodeIsDynamic(node.value);
-  }
-  return true;
-}
-
-function nodeWillBeString(node) {
-  if('Literal' === node.type) {
-    return String(node.value) === node.value;
-  } else if('UnaryExpression' === node.type) {
-    return nodeWillBeString(node.argument);
-  } else if('BinaryExpression' === node.type) {
-    return nodeWillBeString(node.left) && nodeWillBeString(node.right);
-  }
-  return false;
 }
 
 module.exports = eMQCheckRenameUpdates;
