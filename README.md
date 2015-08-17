@@ -49,6 +49,12 @@ Default: `'check-numeric-updates': 2`
 Check update queries to ensure numeric operators like $mul and $inc contain
  numeric values.
 
+ ## check-rename-updates
+
+ Default: `'check-rename-updates': 2`
+
+ Check ``$rename` update operator usage.
+
 ## How to create a new rule
 
 Avoid wasting your time and follow those steps to suggest a new rule:
