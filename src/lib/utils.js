@@ -32,7 +32,7 @@ function lookupCall(context, callPatterns, cb) {
 
       callPatterns.some(function(callPattern) {
         if(callPattern.exec(functionCallSource)) {
-          cb.call(this, functionCallSource, node.arguments);
+          cb.call(this, functionCallSource, node.arguments, node);
           return true;
         }
       });
