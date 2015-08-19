@@ -1,9 +1,10 @@
 'use strict';
 
-// See http://docs.mongodb.org/master/reference/method/js-collection/
+var YError = require('yerror');
 
 var utils = {
   CALL_PATTERNS: {
+    // See http://docs.mongodb.org/master/reference/method/js-collection/
     QUERY: [
       /(\.|^)db\.collection\([^\)]+\)\.(find|findOne|)/,
     ],
@@ -20,7 +21,42 @@ var utils = {
   nodeIsDynamic: nodeIsDynamic,
   nodeWillBeString: nodeWillBeString,
   nodeWillBeNumber: nodeWillBeNumber,
+  lookupCall: lookupCall,
+  everyProperties: everyProperties,
 };
+
+function lookupCall(context, callPatterns, cb) {
+  return {
+    CallExpression: function(node) {
+      var functionCallSource = context.getSource(node.callee);
+
+      callPatterns.some(function(callPattern) {
+        if(callPattern.exec(functionCallSource)) {
+          cb.call(this, functionCallSource, node.arguments);
+          return true;
+        }
+      });
+    },
+  };
+}
+
+function everyProperties(node, propertyPatterns, cb) {
+  if('ObjectExpression' !== node.type) {
+    throw new YError('E_BAD_NODE', node.type);
+  }
+  return node.properties.every(function(property) {
+    // Discard computed properties (maybe warn as harmful in another rule?)
+    if('Identifier' !== property.key.type) {
+      return true;
+    }
+    if(propertyPatterns.some(function(propertyPattern) {
+      return !!propertyPattern.exec(property.key.name);
+    })) {
+      return cb(property);
+    }
+    return true;
+  });
+}
 
 function nodeIsDynamic(node) {
   if('Literal' === node.type) {

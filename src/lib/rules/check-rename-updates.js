@@ -3,6 +3,36 @@
 var utils = require('../utils');
 
 function eMQCheckRenameUpdates(context) {
+
+  return utils.lookupCall(context, utils.CALL_PATTERNS.UPDATE,
+    function(callSource, args) {
+      if((!args[1]) || 'ObjectExpression' !== args[1].type) {
+        context.report(args[1], 'Expected ' + callSource +
+          ' call second argument value to be an object.');
+        return false;
+      }
+      if(!args[1].properties.length) {
+        return false;
+      }
+      return utils.everyProperties(args[1], [/\$rename/], function(property) {
+        if('ObjectExpression' !== property.value.type) {
+          context.report(property, 'Expected ' + property.key.name +
+            ' operator value to be an object.');
+          return false;
+        }
+        return property.value.properties.every(function(propertyNode) {
+          if((!utils.nodeIsDynamic(propertyNode.value)) &&
+            !utils.nodeWillBeString(propertyNode.value)) {
+            context.report(propertyNode, property.key.name +
+              ' operator require strings (key: ' + propertyNode.key.name + ').');
+            return false;
+          }
+          return true;
+        });
+      });
+    }
+  );
+
   var callPatterns = utils.CALL_PATTERNS.UPDATE;
 
   return {
