@@ -49,6 +49,12 @@ Default: `'check-numeric-updates': 2`
 Check update queries to ensure numeric operators like $mul and $inc contain
  numeric values.
 
+## check-updates-calls
+
+Default: `'check-updates-calls': 2`
+
+Check update queries to ensure their arguments are well formed.
+
  ## check-rename-updates
 
  Default: `'check-rename-updates': 2`
