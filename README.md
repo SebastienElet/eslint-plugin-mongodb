@@ -61,11 +61,17 @@ Default: `'check-updates-calls': 2`
 
 Check update queries to ensure their arguments are well formed.
 
- ## check-rename-updates
+## check-rename-updates
 
- Default: `'check-rename-updates': 2`
+Default: `'check-rename-updates': 2`
 
- Check ``$rename` update operator usage.
+Check ``$rename` update operator usage.
+
+## check-unset-updates
+
+Default: `'check-unset-updates': 2`
+
+Check ``$unset` update operator usage.
 
 ## How to create a new rule
 

@@ -23,6 +23,7 @@ var utils = {
   nodeWillBeNumber: nodeWillBeNumber,
   lookupCall: lookupCall,
   everyProperties: everyProperties,
+  nodeIsEmptyString: nodeIsEmptyString,
 };
 
 function lookupCall(context, callPatterns, cb) {
@@ -75,6 +76,13 @@ function nodeIsDynamic(node) {
     return nodeIsDynamic(node.value);
   }
   return true;
+}
+
+function nodeIsEmptyString(node) {
+  if('Literal' === node.type) {
+    return String(node.value) === '';
+  }
+  return false;
 }
 
 function nodeWillBeString(node) {

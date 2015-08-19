@@ -4,8 +4,8 @@
   "description": "Lint your MongoDB queries.",
   "main": "src/index.js",
   "scripts": {
-    "test": "mocha **/*.mocha.js",
-    "lint": "eslint **/*.js",
+    "test": "mocha src/**/*.mocha.js",
+    "lint": "eslint src/**/*.js",
     "lintconfig": "sf-lint-sync",
     "cli": "env NPM_RUN_CLI=1"
   },
