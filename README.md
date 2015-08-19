@@ -3,6 +3,12 @@
 
 [![NPM version](https://badge.fury.io/js/eslint-plugin-mongodb.svg)](https://npmjs.org/package/eslint-plugin-mongodb) [![Build status](https://secure.travis-ci.org/nfroidure/eslint-plugin-mongodb.svg)](https://travis-ci.org/nfroidure/eslint-plugin-mongodb) [![Dependency Status](https://david-dm.org/nfroidure/eslint-plugin-mongodb.svg)](https://david-dm.org/nfroidure/eslint-plugin-mongodb) [![devDependency Status](https://david-dm.org/nfroidure/eslint-plugin-mongodb/dev-status.svg)](https://david-dm.org/nfroidure/eslint-plugin-mongodb#info=devDependencies) [![Coverage Status](https://coveralls.io/repos/nfroidure/eslint-plugin-mongodb/badge.svg?branch=master)](https://coveralls.io/r/nfroidure/eslint-plugin-mongodb?branch=master) [![Code Climate](https://codeclimate.com/github/nfroidure/eslint-plugin-mongodb.svg)](https://codeclimate.com/github/nfroidure/eslint-plugin-mongodb)
 
+** Disclaimer **
+This is a work in progress. Use it only if you whish to be involved in this
+ project evolution by reporting bugs or even sending PRs.
+
+The first stable release will be [1.0.0](https://github.com/nfroidure/eslint-plugin-mongodb).
+
 # Usage
 
 1. Install `eslint` as a dev-dependency:
