@@ -2,7 +2,7 @@
 
 var utils = require('../utils');
 
-function eMQCheckRenameUpdates(context) {
+function eMQCheckUnsetUpdates(context) {
 
   return utils.lookupCall(context, utils.CALL_PATTERNS.UPDATE,
     function(callSource, args) {
@@ -32,4 +32,4 @@ function eMQCheckRenameUpdates(context) {
 
 }
 
-module.exports = eMQCheckRenameUpdates;
+module.exports = eMQCheckUnsetUpdates;

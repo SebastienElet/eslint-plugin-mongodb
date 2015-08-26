@@ -21,9 +21,11 @@ var utils = {
   nodeIsDynamic: nodeIsDynamic,
   nodeWillBeString: nodeWillBeString,
   nodeWillBeNumber: nodeWillBeNumber,
+  nodeWillBeBoolean: nodeWillBeBoolean,
   lookupCall: lookupCall,
   everyProperties: everyProperties,
   nodeIsEmptyString: nodeIsEmptyString,
+  nodeIsString: nodeIsString,
 };
 
 function lookupCall(context, callPatterns, cb) {
@@ -78,6 +80,13 @@ function nodeIsDynamic(node) {
   return true;
 }
 
+function nodeIsTrue(node) {
+  if('Literal' === node.type) {
+    return String(node.value) === true;
+  }
+  return false;
+}
+
 function nodeIsEmptyString(node) {
   if('Literal' === node.type) {
     return String(node.value) === '';
@@ -85,9 +94,13 @@ function nodeIsEmptyString(node) {
   return false;
 }
 
+function nodeIsString(node) {
+  return 'Literal' === node.type && String(node.value) === node.value;
+}
+
 function nodeWillBeString(node) {
-  if('Literal' === node.type) {
-    return String(node.value) === node.value;
+  if(nodeIsString(node)) {
+    return true;
   } else if('UnaryExpression' === node.type) {
     return nodeWillBeString(node.argument);
   } else if('BinaryExpression' === node.type) {
@@ -103,6 +116,15 @@ function nodeWillBeNumber(node) {
     return nodeWillBeNumber(node.argument);
   } else if('BinaryExpression' === node.type) {
     return nodeWillBeNumber(node.left) && nodeWillBeNumber(node.right);
+  }
+  return false;
+}
+
+function nodeWillBeBoolean(node) {
+  if('Literal' === node.type) {
+    return Boolean(node.value) === node.value;
+  } else if('UnaryExpression' === node.type) {
+    return '!' === node.operator;
   }
   return false;
 }

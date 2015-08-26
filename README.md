@@ -73,6 +73,12 @@ Default: `'check-unset-updates': 2`
 
 Check ``$unset` update operator usage.
 
+## check-current-date-updates
+
+Default: `'check-current-date-updates': 2`
+
+Check ``$currentDate` update operator usage.
+
 ## How to create a new rule
 
 Avoid wasting your time and follow those steps to suggest a new rule:
