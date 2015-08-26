@@ -32,7 +32,6 @@
   },
   "devDependencies": {
     "eslint": "^1.1.0",
-    "eslint-tester": "^0.8.2",
     "mocha": "^2.2.5",
     "sf-lint": "^1.0.2"
   },

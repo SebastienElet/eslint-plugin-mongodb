@@ -1,10 +1,12 @@
 'use strict';
 
 var linter = require('eslint').linter;
-var ESLintTester = require('eslint-tester');
-var eslintTester = new ESLintTester(linter);
+var RuleTester = require('eslint').RuleTester;
+var rule = require('./check-current-date-updates');
 
-eslintTester.addRuleTest('src/lib/rules/check-current-date-updates', {
+var ruleTester = new RuleTester(linter);
+
+ruleTester.run('check-current-date-updates', rule, {
   valid: [
     "db.collection('users').update({}, { $currentDate: true });",
     "mongoClient.db.collection('users').update({}, { $currentDate: { $type: 'timestamp' } });",

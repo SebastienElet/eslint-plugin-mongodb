@@ -1,10 +1,12 @@
 'use strict';
 
 var linter = require('eslint').linter;
-var ESLintTester = require('eslint-tester');
-var eslintTester = new ESLintTester(linter);
+var RuleTester = require('eslint').RuleTester;
+var rule = require('./check-update-calls');
 
-eslintTester.addRuleTest('src/lib/rules/check-update-calls', {
+var ruleTester = new RuleTester(linter);
+
+ruleTester.run('check-update-calls', rule, {
   valid: [
     "db.collection('users').update({}, { $rename: { qty: 'quantity' } });",
     "mongoClient.db.collection('users').update({}, { $rename: { qty: newName } }, {});",

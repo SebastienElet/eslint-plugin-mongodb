@@ -7,7 +7,7 @@
 This is a work in progress. Use it only if you whish to be involved in this
  project evolution by reporting bugs or even sending PRs.
 
-The first stable release will be [1.0.0](https://github.com/nfroidure/eslint-plugin-mongodb).
+The first stable release will be [1.0.0](https://github.com/nfroidure/eslint-plugin-mongodb/milestones/v1.0.0).
 
 # Usage
 
@@ -52,7 +52,7 @@ Check update queries to ensure no raw replace is done.
 
 Default: `'check-numeric-updates': 2`
 
-Check update queries to ensure numeric operators like $mul and $inc contain
+Check update queries to ensure numeric operators like `$mul` and `$inc` contain
  numeric values.
 
 ## check-updates-calls
@@ -65,19 +65,19 @@ Check update queries to ensure their arguments are well formed.
 
 Default: `'check-rename-updates': 2`
 
-Check ``$rename` update operator usage.
+Check `$rename` update operator usage.
 
 ## check-unset-updates
 
 Default: `'check-unset-updates': 2`
 
-Check ``$unset` update operator usage.
+Check `$unset` update operator usage.
 
 ## check-current-date-updates
 
 Default: `'check-current-date-updates': 2`
 
-Check ``$currentDate` update operator usage.
+Check `$currentDate` update operator usage.
 
 ## How to create a new rule
 

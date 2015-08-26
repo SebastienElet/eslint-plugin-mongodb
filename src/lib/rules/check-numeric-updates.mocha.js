@@ -1,10 +1,12 @@
 'use strict';
 
 var linter = require('eslint').linter;
-var ESLintTester = require('eslint-tester');
-var eslintTester = new ESLintTester(linter);
+var RuleTester = require('eslint').RuleTester;
+var rule = require('./check-numeric-updates');
 
-eslintTester.addRuleTest('src/lib/rules/check-numeric-updates', {
+var ruleTester = new RuleTester(linter);
+
+ruleTester.run('check-numeric-updates', rule, {
   valid: [
     "db.collection('users').update({}, { $inc: { qty: -1664.1664 }});",
     "mongoClient.db.collection('users').update({}, { $mul: { qty: 33 }});",

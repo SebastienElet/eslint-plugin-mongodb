@@ -1,10 +1,12 @@
 'use strict';
 
 var linter = require('eslint').linter;
-var ESLintTester = require('eslint-tester');
-var eslintTester = new ESLintTester(linter);
+var RuleTester = require('eslint').RuleTester;
+var rule = require('./check-unset-updates');
 
-eslintTester.addRuleTest('src/lib/rules/check-unset-updates', {
+var ruleTester = new RuleTester(linter);
+
+ruleTester.run('check-unset-updates', rule, {
   valid: [
     "db.collection('users').update({}, { $unset: { qty: '', schmilbick: '' } });",
   ],
