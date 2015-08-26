@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-mongodb",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Lint your MongoDB queries.",
   "main": "src/index.js",
   "scripts": {
