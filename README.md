@@ -79,6 +79,12 @@ Default: `'check-current-date-updates': 2`
 
 Check `$currentDate` update operator usage.
 
+## check-minmax-updates
+
+Default: `'check-minmax-updates': 2`
+
+Check `$min` and `$max` update operator usage.
+
 ## How to create a new rule
 
 Avoid wasting your time and follow those steps to suggest a new rule:

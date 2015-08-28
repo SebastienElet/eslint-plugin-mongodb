@@ -8,6 +8,7 @@ module.exports = {
     'check-rename-updates': require('./lib/rules/check-rename-updates'),
     'check-unset-updates': require('./lib/rules/check-unset-updates'),
     'check-current-date-updates': require('./lib/rules/check-current-date-updates'),
+    'check-minmax-updates': require('./lib/rules/check-minmax-updates'),
   },
   rulesConfig: {
     'check-update-calls': 2,
@@ -16,5 +17,6 @@ module.exports = {
     'check-rename-updates': 2,
     'check-unset-updates': 2,
     'check-current-date-updates': 2,
+    'check-minmax-updates': 2,
   },
 };
