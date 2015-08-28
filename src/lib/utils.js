@@ -6,18 +6,19 @@ var utils = {
   CALL_PATTERNS: {
     // See http://docs.mongodb.org/master/reference/method/js-collection/
     QUERY: [
-      /(\.|^)db\.collection\([^\)]+\)\.(find|findOne|)/,
+      /(\.|^)db\.collection\([^\)]+\)\.(find|findOne|)$/,
     ],
     UPDATE: [
-      /(\.|^)db\.collection\([^\)]+\)\.(update|findAndModify)/,
+      /(\.|^)db\.collection\([^\)]+\)\.(update|findAndModify)$/,
     ],
     INSERT: [
-      /(\.|^)db\.collection\([^\)]+\)\.insert/,
+      /(\.|^)db\.collection\([^\)]+\)\.insert$/,
     ],
     REMOVE: [
-      /(\.|^)db\.collection\([^\)]+\)\.remove/,
+      /(\.|^)db\.collection\([^\)]+\)\.remove$/,
     ],
   },
+  getCallPattern: getCallPattern,
   nodeIsDynamic: nodeIsDynamic,
   nodeWillBeString: nodeWillBeString,
   nodeWillBeNumber: nodeWillBeNumber,
@@ -26,7 +27,20 @@ var utils = {
   everyProperties: everyProperties,
   nodeIsEmptyString: nodeIsEmptyString,
   nodeIsString: nodeIsString,
+  nodeIsTrue: nodeIsTrue,
 };
+
+function getCallPattern(type, settings) {
+  if(
+    settings && settings.mongodb && settings.mongodb.callPatterns &&
+    settings.mongodb.callPatterns[type]
+  ) {
+    return settings.mongodb.callPatterns[type].map(function(pattern) {
+      return new RegExp(pattern);
+    });
+  }
+  return utils.CALL_PATTERNS[type.toUpperCase()];
+}
 
 function lookupCall(context, callPatterns, cb) {
   return {

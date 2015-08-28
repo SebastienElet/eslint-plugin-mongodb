@@ -4,7 +4,7 @@ var utils = require('../utils');
 
 function eMQCheckCurrentDateUpdates(context) {
 
-  return utils.lookupCall(context, utils.CALL_PATTERNS.UPDATE,
+  return utils.lookupCall(context, utils.getCallPattern('update', context.settings),
     function(callSource, args) {
       if((!args[1]) || 'ObjectExpression' !== args[1].type ||
         !args[1].properties.length) {

@@ -7,14 +7,29 @@ var rule = require('./check-current-date-updates');
 var ruleTester = new RuleTester(linter);
 
 ruleTester.run('check-current-date-updates', rule, {
-  valid: [
-    "db.collection('users').update({}, { $currentDate: true });",
+  valid: [{
+    code: "userCollection.update({}, { $currentDate: true });",
+    settings: {
+      mongodb: {
+        callPatterns: {
+          update: ['^(user|place|session)Collection\\.(update|findAndModify)$'],
+        }
+      },
+    },
+  },
     "mongoClient.db.collection('users').update({}, { $currentDate: { $type: 'timestamp' } });",
     "mongoClient.db.collection('users').update({}, { $currentDate: { $type: 'date' } });",
     "mongoClient.db.collection('users').update({}, { $currentDate: !mybool });",
   ],
   invalid: [{
-    code: "db.collection('users').update({}, { $currentDate: 'true' });",
+    code: "userCollection.update({}, { $currentDate: 'true' });",
+    settings: {
+      mongodb: {
+        callPatterns: {
+          update: ['^(user|place|session)Collection\\.(update|findAndModify)$'],
+        }
+      },
+    },
     errors: [{
       message: 'Expected $currentDate operator value to be a boolean or an object.',
     }],
