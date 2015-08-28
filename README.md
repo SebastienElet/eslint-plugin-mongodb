@@ -74,6 +74,18 @@ Note that the above are strings representing regular expressions. It will be
 
 ## Rules
 
+### check-query-calls
+
+Default: `'check-query-calls': 2`
+
+Check `find`/`findOne` calls to ensure their arguments are well formed.
+
+### check-update-calls
+
+Default: `'check-update-calls': 2`
+
+Check `update` calls to ensure their arguments are well formed.
+
 ### no-replace
 
 Default: `'no_replace': 1`
@@ -86,12 +98,6 @@ Default: `'check-numeric-updates': 2`
 
 Check update queries to ensure numeric operators like `$mul` and `$inc` contain
  numeric values.
-
-### check-updates-calls
-
-Default: `'check-updates-calls': 2`
-
-Check update queries to ensure their arguments are well formed.
 
 ### check-rename-updates
 

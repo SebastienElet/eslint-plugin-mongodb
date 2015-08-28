@@ -1,0 +1,32 @@
+'use strict';
+
+var linter = require('eslint').linter;
+var RuleTester = require('eslint').RuleTester;
+var rule = require('./check-query-calls');
+
+var ruleTester = new RuleTester(linter);
+
+ruleTester.run('check-query-calls', rule, {
+  valid: [
+    "db.collection('users').find({_id: plop});",
+    "mongoClient.db.collection('users').find({}, { limit: 10 });",
+    "mongoClient.db.collection('users').findOne(gen(), {});",
+    "mongoClient.db.collection('users').find(ref, {});",
+  ],
+  invalid: [{
+    code: "db.collection('users').find();",
+    errors: [{
+      message: 'Expected db.collection(\'users\').find to have at least 1 argument.',
+    }],
+  }, {
+    code: "mongoClient.db.collection('users').find('test', {});",
+    errors: [{
+      message: 'Expected mongoClient.db.collection(\'users\').find call first argument value to be an object.',
+    }],
+  }, {
+    code: "mongoClient.db.collection('users').find({}, 'test');",
+    errors: [{
+      message: 'Expected mongoClient.db.collection(\'users\').find call second argument value to be an object.',
+    }],
+  }],
+});

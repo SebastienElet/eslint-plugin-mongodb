@@ -2,13 +2,13 @@
 
 var utils = require('../utils');
 
-function eMQCheckUpdateCalls(context) {
+function eMQCheckQueryCalls(context) {
 
-  return utils.lookupCall(context, utils.getCallPattern('update', context.settings),
+  return utils.lookupCall(context, utils.getCallPattern('query', context.settings),
     function(callSource, args, node) {
-      if((!args[0]) || !args[1]) {
+      if(!args[0]) {
         context.report(node, 'Expected ' + callSource +
-          ' to have at least 2 arguments.');
+          ' to have at least 1 argument.');
         return false;
       }
       if((!args[0]) || ((!utils.nodeIsDynamic(args[0])) &&
@@ -17,15 +17,9 @@ function eMQCheckUpdateCalls(context) {
           ' call first argument value to be an object.');
         return false;
       }
-      if((!args[1]) || ((!utils.nodeIsDynamic(args[1])) &&
-        'ObjectExpression' !== args[1].type)) {
+      if(args[1] && 'ObjectExpression' !== args[1].type) {
         context.report(args[1], 'Expected ' + callSource +
           ' call second argument value to be an object.');
-        return false;
-      }
-      if(args[2] && 'ObjectExpression' !== args[2].type) {
-        context.report(args[1], 'Expected ' + callSource +
-          ' call third argument value to be an object.');
         return false;
       }
       return true;
@@ -34,4 +28,4 @@ function eMQCheckUpdateCalls(context) {
 
 }
 
-module.exports = eMQCheckUpdateCalls;
+module.exports = eMQCheckQueryCalls;
