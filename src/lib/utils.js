@@ -96,14 +96,14 @@ function nodeIsDynamic(node) {
 
 function nodeIsTrue(node) {
   if('Literal' === node.type) {
-    return String(node.value) === true;
+    return true === String(node.value);
   }
   return false;
 }
 
 function nodeIsEmptyString(node) {
   if('Literal' === node.type) {
-    return String(node.value) === '';
+    return '' === String(node.value);
   }
   return false;
 }
