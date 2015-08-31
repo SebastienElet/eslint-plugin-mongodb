@@ -1,5 +1,5 @@
 # eslint-plugin-mongodb
-> Eslint rules for MongoDB best practices.
+> Eslint rules for the [NodeJS MongoDB native driver 2.0](http://mongodb.github.io/node-mongodb-native/2.0/) syntax and best practices.
 
 [![NPM version](https://badge.fury.io/js/eslint-plugin-mongodb.svg)](https://npmjs.org/package/eslint-plugin-mongodb) [![Build status](https://secure.travis-ci.org/nfroidure/eslint-plugin-mongodb.svg)](https://travis-ci.org/nfroidure/eslint-plugin-mongodb) [![Dependency Status](https://david-dm.org/nfroidure/eslint-plugin-mongodb.svg)](https://david-dm.org/nfroidure/eslint-plugin-mongodb) [![devDependency Status](https://david-dm.org/nfroidure/eslint-plugin-mongodb/dev-status.svg)](https://david-dm.org/nfroidure/eslint-plugin-mongodb#info=devDependencies) [![Coverage Status](https://coveralls.io/repos/nfroidure/eslint-plugin-mongodb/badge.svg?branch=master)](https://coveralls.io/r/nfroidure/eslint-plugin-mongodb?branch=master) [![Code Climate](https://codeclimate.com/github/nfroidure/eslint-plugin-mongodb.svg)](https://codeclimate.com/github/nfroidure/eslint-plugin-mongodb)
 
