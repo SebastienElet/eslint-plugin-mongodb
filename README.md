@@ -86,6 +86,12 @@ Default: `'check-update-calls': 2`
 
 Check `update` calls to ensure their arguments are well formed.
 
+### check-remove-calls
+
+Default: `'check-remove-calls': 2`
+
+Check `remove` calls to ensure their arguments are well formed.
+
 ### no-replace
 
 Default: `'no_replace': 1`

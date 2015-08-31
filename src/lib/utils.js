@@ -15,7 +15,7 @@ var utils = {
       /(\.|^)db\.collection\([^\)]+\)\.insert$/,
     ],
     REMOVE: [
-      /(\.|^)db\.collection\([^\)]+\)\.remove$/,
+      /(\.|^)db\.collection\([^\)]+\)\.(remove|deleteOne|deleteMany)$/,
     ],
   },
   getCallPattern: getCallPattern,
