@@ -4,7 +4,7 @@ var utils = require('../utils');
 
 function eMQCheckQueryCalls(context) {
 
-  return utils.lookupCall(context, utils.getCallPattern('query', context.settings),
+  return utils.lookupCall(context, utils.getCallPatterns('query', context.settings),
     function(callSource, args, node) {
       if(!args[0]) {
         context.report(node, 'Expected ' + callSource +

@@ -4,7 +4,7 @@ var utils = require('../utils');
 
 function eMQCheckRemoveCalls(context) {
 
-  return utils.lookupCall(context, utils.getCallPattern('remove', context.settings),
+  return utils.lookupCall(context, utils.getCallPatterns('remove', context.settings),
     function(callSource, args, node) {
       if(!args[0]) {
         context.report(node, 'Expected ' + callSource +

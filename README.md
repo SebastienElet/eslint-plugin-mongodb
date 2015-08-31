@@ -92,6 +92,12 @@ Default: `'check-remove-calls': 2`
 
 Check `remove` calls to ensure their arguments are well formed.
 
+### check-deprecated-calls
+
+Default: `'check-deprecated-calls': 2`
+
+Check collection calls and warn in case of deprecated methods usage.
+
 ### no-replace
 
 Default: `'no_replace': 1`

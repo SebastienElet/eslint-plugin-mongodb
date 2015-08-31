@@ -5,6 +5,7 @@ module.exports = {
     'check-update-calls': require('./lib/rules/check-update-calls'),
     'check-query-calls': require('./lib/rules/check-query-calls'),
     'check-remove-calls': require('./lib/rules/check-remove-calls'),
+    'check-deprecated-calls': require('./lib/rules/check-deprecated-calls'),
     'no-replace': require('./lib/rules/no-replace'),
     'check-numeric-updates': require('./lib/rules/check-numeric-updates'),
     'check-rename-updates': require('./lib/rules/check-rename-updates'),

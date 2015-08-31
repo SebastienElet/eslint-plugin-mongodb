@@ -9,7 +9,7 @@ var utils = {
       /(\.|^)db\.collection\([^\)]+\)\.(find|findOne|)$/,
     ],
     UPDATE: [
-      /(\.|^)db\.collection\([^\)]+\)\.(update|findAndModify)$/,
+      /(\.|^)db\.collection\([^\)]+\)\.(update|findAndModify|updateOne|updateMany)$/,
     ],
     INSERT: [
       /(\.|^)db\.collection\([^\)]+\)\.insert$/,
@@ -18,7 +18,8 @@ var utils = {
       /(\.|^)db\.collection\([^\)]+\)\.(remove|deleteOne|deleteMany)$/,
     ],
   },
-  getCallPattern: getCallPattern,
+  getAllCallPatterns: getAllCallPatterns,
+  getCallPatterns: getCallPatterns,
   nodeIsDynamic: nodeIsDynamic,
   nodeWillBeString: nodeWillBeString,
   nodeWillBeNumber: nodeWillBeNumber,
@@ -30,7 +31,13 @@ var utils = {
   nodeIsTrue: nodeIsTrue,
 };
 
-function getCallPattern(type, settings) {
+function getAllCallPatterns(settings) {
+  return Object.keys(utils.CALL_PATTERNS).reduce(function(patterns, type) {
+    return patterns.concat(utils.getCallPatterns(type.toLowerCase(), settings));
+  }, []);
+}
+
+function getCallPatterns(type, settings) {
   if(
     settings && settings.mongodb && settings.mongodb.callPatterns &&
     settings.mongodb.callPatterns[type]

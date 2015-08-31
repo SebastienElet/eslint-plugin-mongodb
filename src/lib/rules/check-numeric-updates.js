@@ -4,7 +4,7 @@ var utils = require('../utils');
 
 function eMQCheckNumericUpdates(context) {
 
-  return utils.lookupCall(context, utils.getCallPattern('update', context.settings),
+  return utils.lookupCall(context, utils.getCallPatterns('update', context.settings),
     function(callSource, args) {
       if((!args[1]) || 'ObjectExpression' !== args[1].type) {
         context.report(args[1], 'Expected ' + callSource +
