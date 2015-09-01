@@ -52,17 +52,23 @@ function calls. By using [shared settings](http://eslint.org/docs/user-guide/con
         "mongodb": {
           "callPatterns": {
             "query": [
-              "(\\.|^)db\\.collection\\([^\\)]+\\)\\.(find|findOne|)",
+              "(\\.|^)db\\.collection\\([^\\)]+\\)\\.(find|findOne|)$",
             ],
             "update": [
-              "(\\.|^)db\\.collection\\([^\\)]+\\)\\.(update|findAndModify)",
+              "(\\.|^)db\\.collection\\([^\\)]+\\)\\.(findOneAndUpdate|updateOne|updateMany)$",
             ],
             "insert": [
-              "(\\.|^)db\\.collection\\([^\\)]+\\)\\.insert",
+              "(\\.|^)db\\.collection\\([^\\)]+\\)\\.insertOne$",
+            ],
+            "insert_many": [
+              "(\\.|^)db\\.collection\\([^\\)]+\\)\\.(findOneAndDelete|deleteOne|deleteMany)$",
             ],
             "remove": [
-              "(\\.|^)db\\.collection\\([^\\)]+\\)\\.remove",
+              "(\\.|^)db\\.collection\\([^\\)]+\\)\\.(findOneAndDelete|deleteOne|deleteMany)$",
             ],
+            "deprecated": [
+              "(\\.|^)db\\.collection\\([^\\)]+\\)\\.(remove|update|findAndModify|ensureIndex|findAndRemove|insert|dropAllIndexes)$",
+            ]
           }
         }
     }

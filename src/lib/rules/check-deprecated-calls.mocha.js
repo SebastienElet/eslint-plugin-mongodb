@@ -24,9 +24,9 @@ ruleTester.run('check-deprecated-calls', rule, {
       message: 'update method is deprecated.',
     }],
   }, {
-    code: "mongoClient.db.collection('users').insert([{}]);",
+    code: "mongoClient.db.collection('users').remove([{}]);",
     errors: [{
-      message: 'insert method is deprecated.',
+      message: 'remove method is deprecated.',
     }],
   }],
 });

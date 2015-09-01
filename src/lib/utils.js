@@ -9,13 +9,19 @@ var utils = {
       /(\.|^)db\.collection\([^\)]+\)\.(find|findOne|)$/,
     ],
     UPDATE: [
-      /(\.|^)db\.collection\([^\)]+\)\.(update|findAndModify|updateOne|updateMany)$/,
+      /(\.|^)db\.collection\([^\)]+\)\.(findOneAndUpdate|updateOne|updateMany)$/,
     ],
     INSERT: [
-      /(\.|^)db\.collection\([^\)]+\)\.insert$/,
+      /(\.|^)db\.collection\([^\)]+\)\.insertOne$/,
+    ],
+    INSERT_MANY: [
+      /(\.|^)db\.collection\([^\)]+\)\.insertMany$/,
     ],
     REMOVE: [
-      /(\.|^)db\.collection\([^\)]+\)\.(remove|deleteOne|deleteMany)$/,
+      /(\.|^)db\.collection\([^\)]+\)\.(findOneAndDelete|deleteOne|deleteMany)$/,
+    ],
+    DEPRECATED: [
+      /(\.|^)db\.collection\([^\)]+\)\.(remove|update|findAndModify|ensureIndex|findAndRemove|insert|dropAllIndexes)$/,
     ],
   },
   getAllCallPatterns: getAllCallPatterns,

@@ -8,18 +8,18 @@ var ruleTester = new RuleTester(linter);
 
 ruleTester.run('check-numeric-updates', rule, {
   valid: [
-    "db.collection('users').update({}, { $inc: { qty: -1664.1664 }});",
-    "mongoClient.db.collection('users').update({}, { $mul: { qty: 33 }});",
-    "mongoClient.db.collection('users').update({}, { $mul: { test: plop }});", // Computed :(
-    "mongoClient.db.collection('users').update({}, { $mul: { qty: 33 * 33 }});", // Computed
+    "db.collection('users').updateMany({}, { $inc: { qty: -1664.1664 }});",
+    "mongoClient.db.collection('users').updateMany({}, { $mul: { qty: 33 }});",
+    "mongoClient.db.collection('users').updateMany({}, { $mul: { test: plop }});", // Computed :(
+    "mongoClient.db.collection('users').updateMany({}, { $mul: { qty: 33 * 33 }});", // Computed
   ],
   invalid: [{
-    code: "db.collection('users').update({}, { $mul: 'test' });",
+    code: "db.collection('users').updateMany({}, { $mul: 'test' });",
     errors: [{
       message: 'Expected $mul operator value to be an object.',
     }],
   }, {
-    code: "mongoClient.db.collection('users').update({}, { $inc: {test: 'test'}});",
+    code: "mongoClient.db.collection('users').updateMany({}, { $inc: {test: 'test'}});",
     errors: [{
       message: '$inc operator require numbers (key: test).',
     }],
