@@ -12,10 +12,7 @@ var utils = {
       /(\.|^)db\.collection\([^\)]+\)\.(findOneAndUpdate|updateOne|updateMany)$/,
     ],
     INSERT: [
-      /(\.|^)db\.collection\([^\)]+\)\.insertOne$/,
-    ],
-    INSERT_MANY: [
-      /(\.|^)db\.collection\([^\)]+\)\.insertMany$/,
+      /(\.|^)db\.collection\([^\)]+\)\.(insertOne|insertMany)$/,
     ],
     REMOVE: [
       /(\.|^)db\.collection\([^\)]+\)\.(findOneAndDelete|deleteOne|deleteMany)$/,
@@ -35,6 +32,8 @@ var utils = {
   nodeIsEmptyString: nodeIsEmptyString,
   nodeIsString: nodeIsString,
   nodeIsTrue: nodeIsTrue,
+  nodeIsArray: nodeIsArray,
+  nodeIsEmptyArray: nodeIsEmptyArray,
 };
 
 function getAllCallPatterns(settings) {
@@ -101,6 +100,9 @@ function nodeIsDynamic(node) {
   if('ObjectExpression' === node.type) {
     return node.properties.every(nodeIsDynamic);
   }
+  if('ArrayExpression' === node.type) {
+    return node.elements.every(nodeIsDynamic);
+  }
   if('Property' === node.type) {
     return nodeIsDynamic(node.value);
   }
@@ -154,6 +156,14 @@ function nodeWillBeBoolean(node) {
     return '!' === node.operator;
   }
   return false;
+}
+
+function nodeIsArray(node) {
+  return 'ArrayExpression' === node.type;
+}
+
+function nodeIsEmptyArray(node) {
+  return nodeIsArray(node) && 0 === node.elements.length;
 }
 
 module.exports = utils;

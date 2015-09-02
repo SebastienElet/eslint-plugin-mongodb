@@ -2,6 +2,7 @@
 
 module.exports = {
   rules: {
+    'check-insert-calls': require('./lib/rules/check-insert-calls'),
     'check-update-calls': require('./lib/rules/check-update-calls'),
     'check-query-calls': require('./lib/rules/check-query-calls'),
     'check-remove-calls': require('./lib/rules/check-remove-calls'),
@@ -14,6 +15,7 @@ module.exports = {
     'check-minmax-updates': require('./lib/rules/check-minmax-updates'),
   },
   rulesConfig: {
+    'check-insert-calls': 2,
     'check-update-calls': 2,
     'check-query-calls': 2,
     'check-remove-calls': 2,

@@ -24,7 +24,7 @@ function eMQCheckUpdateCalls(context) {
         return false;
       }
       if(args[2] && 'ObjectExpression' !== args[2].type) {
-        context.report(args[1], 'Expected ' + callSource +
+        context.report(args[2], 'Expected ' + callSource +
           ' call third argument value to be an object.');
         return false;
       }

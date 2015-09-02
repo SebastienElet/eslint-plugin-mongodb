@@ -58,10 +58,7 @@ function calls. By using [shared settings](http://eslint.org/docs/user-guide/con
               "(\\.|^)db\\.collection\\([^\\)]+\\)\\.(findOneAndUpdate|updateOne|updateMany)$",
             ],
             "insert": [
-              "(\\.|^)db\\.collection\\([^\\)]+\\)\\.insertOne$",
-            ],
-            "insert_many": [
-              "(\\.|^)db\\.collection\\([^\\)]+\\)\\.(findOneAndDelete|deleteOne|deleteMany)$",
+              "(\\.|^)db\\.collection\\([^\\)]+\\)\\.(insertOne|insertMany)$",
             ],
             "remove": [
               "(\\.|^)db\\.collection\\([^\\)]+\\)\\.(findOneAndDelete|deleteOne|deleteMany)$",
@@ -79,6 +76,12 @@ Note that the above are strings representing regular expressions. It will be
  cast with the `RegExp` constructor so you have to escape your escapes ;).
 
 ## Rules
+
+### check-insert-calls
+
+Default: `'check-insert-calls': 2`
+
+Check `insertOne`/`insertMany` calls to ensure their arguments are well formed.
 
 ### check-query-calls
 

@@ -11,9 +11,8 @@ function eMQCheckQueryCalls(context) {
           ' to have at least 1 argument.');
         return false;
       }
-      if((!args[0]) || ((!utils.nodeIsDynamic(args[0])) &&
-        'ObjectExpression' !== args[0].type)) {
-        context.report(args[1], 'Expected ' + callSource +
+      if((!utils.nodeIsDynamic(args[0])) && 'ObjectExpression' !== args[0].type) {
+        context.report(args[0], 'Expected ' + callSource +
           ' call first argument value to be an object.');
         return false;
       }

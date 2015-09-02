@@ -18,6 +18,7 @@ function eMQCheckUnsetUpdates(context) {
         }
         return property.value.properties.every(function(propertyNode) {
           if((utils.nodeIsDynamic(propertyNode.value)) ||
+            // ^ No sense to have a dynamic expression returning empty strings??
             !utils.nodeIsEmptyString(propertyNode.value)) {
             context.report(propertyNode, property.key.name +
               ' operator require deleted keys to be set to empty strings (key: ' +
