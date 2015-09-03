@@ -10,8 +10,10 @@ ruleTester.run('check-remove-calls', rule, {
   valid: [
     "db.collection('users').deleteOne({_id: plop});",
     "mongoClient.db.collection('users').deleteMany({}, { limit: 10 });",
-    "mongoClient.db.collection('users').remove(gen(), {});",
-    "mongoClient.db.collection('users').delete(ref, {});",
+    "mongoClient.db.collection('users').deleteMany(gen(), {});",
+    "mongoClient.db.collection('users').deleteOne(ref, {});",
+    "mongoClient.db.collection('users').deleteOne(ref, function() {});",
+    "mongoClient.db.collection('users').deleteOne(ref, {}, function() {});",
   ],
   invalid: [{
     code: "db.collection('users').deleteOne();",
@@ -26,7 +28,12 @@ ruleTester.run('check-remove-calls', rule, {
   }, {
     code: "mongoClient.db.collection('users').deleteOne({}, 'test');",
     errors: [{
-      message: 'Expected mongoClient.db.collection(\'users\').deleteOne call second argument value to be an object.',
+      message: 'Expected mongoClient.db.collection(\'users\').deleteOne call second argument value to be an object or a callback function.',
+    }],
+  }, {
+    code: "mongoClient.db.collection('users').deleteOne({}, {}, function() {}, {});",
+    errors: [{
+      message: 'Expected mongoClient.db.collection(\'users\').deleteOne call to have maximum 3 arguments.',
     }],
   }],
 });
