@@ -36,7 +36,17 @@ ruleTester.run('check-update-calls', rule, {
   }, {
     code: "mongoClient.db.collection('users').updateOne({}, {}, 'test');",
     errors: [{
-      message: 'Expected mongoClient.db.collection(\'users\').updateOne call third argument value to be an object.',
+      message: 'Expected mongoClient.db.collection(\'users\').updateOne call third argument value to be an object or a callback function.',
+    }],
+  }, {
+    code: "mongoClient.db.collection('users').updateOne({}, {}, function() {}, {});",
+    errors: [{
+      message: 'Expected mongoClient.db.collection(\'users\').updateOne call fourth argument value to be a callback function.',
+    }],
+  }, {
+    code: "mongoClient.db.collection('users').updateOne({}, {}, {}, function() {}, function() {});",
+    errors: [{
+      message: 'Expected mongoClient.db.collection(\'users\').updateOne call to have maximum 4 arguments.',
     }],
   }],
 });

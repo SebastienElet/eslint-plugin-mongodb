@@ -13,7 +13,7 @@ function eMQCheckUpdateCalls(context) {
       }
       if((!args[0]) || ((!utils.nodeIsDynamic(args[0])) &&
         'ObjectExpression' !== args[0].type)) {
-        context.report(args[1], 'Expected ' + callSource +
+        context.report(args[0], 'Expected ' + callSource +
           ' call first argument value to be an object.');
         return false;
       }
@@ -23,9 +23,21 @@ function eMQCheckUpdateCalls(context) {
           ' call second argument value to be an object.');
         return false;
       }
-      if(args[2] && 'ObjectExpression' !== args[2].type) {
+      if(args[2] && ((!utils.nodeIsDynamic(args[2])) &&
+        'ObjectExpression' !== args[2].type &&
+        'FunctionExpression' !== args[2].type)) {
         context.report(args[2], 'Expected ' + callSource +
-          ' call third argument value to be an object.');
+          ' call third argument value to be an object or a callback function.');
+        return false;
+      }
+      if(args[3] && 'FunctionExpression' !== args[3].type) {
+        context.report(args[3], 'Expected ' + callSource +
+          ' call fourth argument value to be a callback function.');
+        return false;
+      }
+      if(args[4]) {
+        context.report(node, 'Expected ' + callSource +
+          ' call to have maximum 4 arguments.');
         return false;
       }
       return true;
