@@ -9,9 +9,10 @@ var ruleTester = new RuleTester(linter);
 ruleTester.run('check-insert-calls', rule, {
   valid: [
     "db.collection('users').insertMany([{}, {}, {}]);",
-    "mongoClient.db.collection('users').insertOne({}, { $rename: { qty: newName } }, {});",
+    "mongoClient.db.collection('users').insertOne({}, {});",
     "mongoClient.db.collection('users').insertMany(gen(), {});",
     "mongoClient.db.collection('users').insertOne(ref, {});",
+    "mongoClient.db.collection('users').insertOne(ref, {}, function(){});",
   ],
   invalid: [{
     code: "db.collection('users').insertMany();",
@@ -36,12 +37,32 @@ ruleTester.run('check-insert-calls', rule, {
   }, {
     code: "mongoClient.db.collection('users').insertOne([{}], 'test');",
     errors: [{
-      message: 'Expected mongoClient.db.collection(\'users\').insertOne call second argument value to be an object.',
+      message: 'Expected mongoClient.db.collection(\'users\').insertOne call second argument value to be an object or a callback function.',
+    }],
+  }, {
+    code: "mongoClient.db.collection('users').insertOne({}, {}, function() {}, {});",
+    errors: [{
+      message: 'Expected mongoClient.db.collection(\'users\').insertOne call to have maximum 3 arguments.',
+    }],
+  }, {
+    code: "mongoClient.db.collection('users').insertOne({}, {}, 'test');",
+    errors: [{
+      message: 'Expected mongoClient.db.collection(\'users\').insertOne call third argument value to be a callback function.',
     }],
   }, {
     code: "mongoClient.db.collection('users').insertMany([{}], 'test');",
     errors: [{
-      message: 'Expected mongoClient.db.collection(\'users\').insertMany call second argument value to be an object.',
+      message: 'Expected mongoClient.db.collection(\'users\').insertMany call second argument value to be an object or a callback function.',
+    }],
+  }, {
+    code: "mongoClient.db.collection('users').insertMany([{}], {}, 'test');",
+    errors: [{
+      message: 'Expected mongoClient.db.collection(\'users\').insertMany call third argument value to be a callback function.',
+    }],
+  }, {
+    code: "mongoClient.db.collection('users').insertMany([{}], {}, function() {}, {});",
+    errors: [{
+      message: 'Expected mongoClient.db.collection(\'users\').insertMany call to have maximum 3 arguments.',
     }],
   }],
 });

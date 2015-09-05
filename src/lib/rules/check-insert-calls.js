@@ -21,7 +21,17 @@ function eMQCheckInsertCalls(context) {
         if(args[1] && ((!utils.nodeIsDynamic(args[1])) &&
           'ObjectExpression' !== args[1].type)) {
           context.report(args[1], 'Expected ' + callSource +
-            ' call second argument value to be an object.');
+            ' call second argument value to be an object or a callback function.');
+          return false;
+        }
+        if(args[2] && 'FunctionExpression' !== args[2].type) {
+          context.report(args[2], 'Expected ' + callSource +
+            ' call third argument value to be a callback function.');
+          return false;
+        }
+        if(args[3]) {
+          context.report(node, 'Expected ' + callSource +
+            ' call to have maximum 3 arguments.');
           return false;
         }
         return true;
@@ -32,14 +42,24 @@ function eMQCheckInsertCalls(context) {
         return false;
       }
       if((!utils.nodeIsDynamic(args[0])) && !utils.nodeIsArray(args[0].type)) {
-        context.report(args[1], 'Expected ' + callSource +
+        context.report(args[0], 'Expected ' + callSource +
           ' call first argument value to be an array.');
         return false;
       }
       if(args[1] && (!utils.nodeIsDynamic(args[1])) &&
         'ObjectExpression' !== args[1].type) {
         context.report(args[1], 'Expected ' + callSource +
-          ' call second argument value to be an object.');
+          ' call second argument value to be an object or a callback function.');
+        return false;
+      }
+      if(args[2] && 'FunctionExpression' !== args[2].type) {
+        context.report(args[2], 'Expected ' + callSource +
+          ' call third argument value to be a callback function.');
+        return false;
+      }
+      if(args[3]) {
+        context.report(node, 'Expected ' + callSource +
+          ' call to have maximum 3 arguments.');
         return false;
       }
       return true;

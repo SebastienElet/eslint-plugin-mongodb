@@ -31,6 +31,11 @@ ruleTester.run('check-remove-calls', rule, {
       message: 'Expected mongoClient.db.collection(\'users\').deleteOne call second argument value to be an object or a callback function.',
     }],
   }, {
+    code: "mongoClient.db.collection('users').deleteOne({}, {}, 'test');",
+    errors: [{
+      message: 'Expected mongoClient.db.collection(\'users\').deleteOne call third argument value to be a callback function.',
+    }],
+  }, {
     code: "mongoClient.db.collection('users').deleteOne({}, {}, function() {}, {});",
     errors: [{
       message: 'Expected mongoClient.db.collection(\'users\').deleteOne call to have maximum 3 arguments.',
