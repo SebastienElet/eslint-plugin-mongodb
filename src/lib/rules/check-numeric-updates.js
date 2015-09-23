@@ -7,8 +7,6 @@ function eMQCheckNumericUpdates(context) {
   return utils.lookupCall(context, utils.getCallPatterns('update', context.settings),
     function(callSource, args) {
       if((!args[1]) || 'ObjectExpression' !== args[1].type) {
-        context.report(args[1], 'Expected ' + callSource +
-          ' call second argument value to be an object.');
         return false;
       }
       if(!args[1].properties.length) {
