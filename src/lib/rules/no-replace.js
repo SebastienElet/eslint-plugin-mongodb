@@ -6,7 +6,7 @@ function eMQNoReplace(context) {
 
   return utils.lookupCall(context, utils.getCallPatterns('update', context.settings),
     function(callSource, args) {
-      if((!args[1])) {
+      if((!args[1]) || 'ObjectExpression' !== args[1].type) {
         return false;
       }
       return utils.everyProperties(args[1], [/[^\$].*/], function(property) {

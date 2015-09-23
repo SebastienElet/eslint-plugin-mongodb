@@ -11,6 +11,7 @@ ruleTester.run('no-replace', rule, {
     "db.collection('users').updateMany({}, { $set: { name: 'test' }});",
     "mongoClient.db.collection('users').update({}, { $set: { name: 'test' }});",
     "db.collection('users').updateMany({}, {});",
+    "db.collection('users').updateMany({}, hey);",
     "db.collection('users').updateMany({});",
   ],
   invalid: [{
