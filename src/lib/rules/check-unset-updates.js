@@ -17,7 +17,7 @@ function eMQCheckUnsetUpdates(context) {
           return false;
         }
         return property.value.properties.every(function(propertyNode) {
-          if((utils.nodeIsDynamic(propertyNode.value)) ||
+          if(utils.nodeIsDynamic(propertyNode.value) ||
             // ^ No sense to have a dynamic expression returning empty strings??
             !utils.nodeIsEmptyString(propertyNode.value)) {
             context.report(propertyNode, property.key.name +

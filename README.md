@@ -113,13 +113,6 @@ Default: `'no_replace': 1`
 
 Check update queries to ensure no raw replace is done.
 
-### check-numeric-updates
-
-Default: `'check-numeric-updates': 2`
-
-Check update queries to ensure numeric operators like `$mul` and `$inc` contain
- numeric values.
-
 ### check-rename-updates
 
 Default: `'check-rename-updates': 2`
@@ -138,11 +131,24 @@ Default: `'check-current-date-updates': 2`
 
 Check `$currentDate` update operator usage.
 
+### check-numeric-updates
+
+Default: `'check-numeric-updates': 2`
+
+Check update queries to ensure numeric operators like `$mul` and `$inc` contain
+ numeric values.
+
 ### check-minmax-updates
 
 Default: `'check-minmax-updates': 2`
 
-Check `$min` and `$max` update operator usage.
+Check `$min` and `$max` update operators usage.
+
+### check-set-updates
+
+Default: `'check-set-updates': 2`
+
+Check `$set` and `$setOnInsert` update operators usage.
 
 ## Contributing
 Feel free to push your code if you agree with publishing under the MIT license.

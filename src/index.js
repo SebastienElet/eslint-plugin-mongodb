@@ -13,6 +13,7 @@ module.exports = {
     'check-unset-updates': require('./lib/rules/check-unset-updates'),
     'check-current-date-updates': require('./lib/rules/check-current-date-updates'),
     'check-minmax-updates': require('./lib/rules/check-minmax-updates'),
+    'check-set-updates': require('./lib/rules/check-set-updates'),
   },
   rulesConfig: {
     'check-insert-calls': 2,
@@ -25,5 +26,6 @@ module.exports = {
     'check-unset-updates': 2,
     'check-current-date-updates': 2,
     'check-minmax-updates': 2,
+    'check-set-updates': 2,
   },
 };
