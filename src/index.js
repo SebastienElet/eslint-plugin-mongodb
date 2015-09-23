@@ -20,6 +20,7 @@ module.exports = {
     'check-update-calls': 2,
     'check-query-calls': 2,
     'check-remove-calls': 2,
+    'check-deprecated-calls': 2,
     'no-replace': 1,
     'check-numeric-updates': 2,
     'check-rename-updates': 2,
