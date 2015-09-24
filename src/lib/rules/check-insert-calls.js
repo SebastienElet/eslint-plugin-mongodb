@@ -24,7 +24,8 @@ function eMQCheckInsertCalls(context) {
             ' call second argument value to be an object or a callback function.');
           return false;
         }
-        if(args[2] && 'FunctionExpression' !== args[2].type) {
+        if(args[2] && (!utils.nodeIsDynamic(args[2])) &&
+          'FunctionExpression' !== args[2].type) {
           context.report(args[2], 'Expected ' + callSource +
             ' call third argument value to be a callback function.');
           return false;
@@ -52,7 +53,8 @@ function eMQCheckInsertCalls(context) {
           ' call second argument value to be an object or a callback function.');
         return false;
       }
-      if(args[2] && 'FunctionExpression' !== args[2].type) {
+      if(args[2] && (!utils.nodeIsDynamic(args[2])) &&
+        'FunctionExpression' !== args[2].type) {
         context.report(args[2], 'Expected ' + callSource +
           ' call third argument value to be a callback function.');
         return false;

@@ -12,6 +12,8 @@ ruleTester.run('check-insert-calls', rule, {
     "mongoClient.db.collection('users').insertOne({}, {});",
     "mongoClient.db.collection('users').insertMany(gen(), {});",
     "mongoClient.db.collection('users').insertOne(ref, {});",
+    "mongoClient.db.collection('users').insertMany(gen(), plop, kikoo);",
+    "mongoClient.db.collection('users').insertOne(ref, plop, kikoo);",
     "mongoClient.db.collection('users').insertOne(ref, {}, function(){});",
   ],
   invalid: [{

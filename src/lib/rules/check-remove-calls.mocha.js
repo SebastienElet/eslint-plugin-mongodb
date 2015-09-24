@@ -12,6 +12,7 @@ ruleTester.run('check-remove-calls', rule, {
     "mongoClient.db.collection('users').deleteMany({}, { limit: 10 });",
     "mongoClient.db.collection('users').deleteMany(gen(), {});",
     "mongoClient.db.collection('users').deleteOne(ref, {});",
+    "mongoClient.db.collection('users').deleteOne(ref, ref, ref);",
     "mongoClient.db.collection('users').deleteOne(ref, function() {});",
     "mongoClient.db.collection('users').deleteOne(ref, {}, function() {});",
   ],

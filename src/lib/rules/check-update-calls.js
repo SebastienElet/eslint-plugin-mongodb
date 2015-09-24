@@ -30,7 +30,10 @@ function eMQCheckUpdateCalls(context) {
           ' call third argument value to be an object or a callback function.');
         return false;
       }
-      if(args[3] && 'FunctionExpression' !== args[3].type) {
+      if(args[3] && (
+        'ObjectExpression' === args[3].type ||
+        ((!utils.nodeIsDynamic(args[3])) && 'FunctionExpression' !== args[3].type)
+      )) {
         context.report(args[3], 'Expected ' + callSource +
           ' call fourth argument value to be a callback function.');
         return false;

@@ -12,6 +12,8 @@ ruleTester.run('check-update-calls', rule, {
     "mongoClient.db.collection('users').updateOne({}, { $rename: { qty: newName } }, {});",
     "mongoClient.db.collection('users').updateMany(gen(), {}, {});",
     "mongoClient.db.collection('users').updateOne(ref, {}, {});",
+    "mongoClient.db.collection('users').updateMany(gen(), gen(), gen());",
+    "mongoClient.db.collection('users').updateOne(ref, ref, ref);",
   ],
   invalid: [{
     code: "db.collection('users').updateMany();",

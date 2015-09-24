@@ -16,13 +16,13 @@ function eMQCheckQueryCalls(context) {
           ' call first argument value to be an object.');
         return false;
       }
-      if(args[1] && 'ObjectExpression' !== args[1].type &&
+      if(args[1] && (!utils.nodeIsDynamic(args[1])) && 'ObjectExpression' !== args[1].type &&
         'FunctionExpression' !== args[1].type) {
         context.report(args[1], 'Expected ' + callSource +
           ' call second argument value to be an object or a callback function.');
         return false;
       }
-      if(args[2] && 'FunctionExpression' !== args[2].type) {
+      if(args[2] && (!utils.nodeIsDynamic(args[2])) && 'FunctionExpression' !== args[2].type) {
         context.report(args[2], 'Expected ' + callSource +
           ' call third argument value to be a callback function.');
         return false;

@@ -12,6 +12,7 @@ ruleTester.run('check-query-calls', rule, {
     "mongoClient.db.collection('users').find({}, { limit: 10 });",
     "mongoClient.db.collection('users').findOne(gen(), {});",
     "mongoClient.db.collection('users').find(ref, {});",
+    "mongoClient.db.collection('users').find(ref, ref, ref);",
     "mongoClient.db.collection('users').find(ref, function() {});",
     "mongoClient.db.collection('users').find(ref, {}, function() {});",
   ],
