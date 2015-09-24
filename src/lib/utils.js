@@ -1,3 +1,5 @@
+/* eslint max-len:[1] */
+
 'use strict';
 
 var YError = require('yerror');
