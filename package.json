@@ -5,6 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "test": "mocha src/**/*.mocha.js",
+    "coveralls": "istanbul cover _mocha --report lcovonly -- src/**/*.mocha.js -R spec -t 5000 && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage",
+    "cover": "istanbul cover --report html _mocha -- src/**/*.mocha.js -R spec -t 5000",
     "lint": "eslint src/**/*.js",
     "preversion": "npm run lint && npm test",
     "cli": "env NPM_RUN_CLI=1"
@@ -31,9 +33,12 @@
     "eslint": ">=0.8.0"
   },
   "devDependencies": {
-    "eslint": "^1.1.0",
-    "mocha": "^2.2.5",
-    "sf-lint": "^1.0.2"
+    "coveralls": "^2.11.4",
+    "eslint": "^1.5.1",
+    "eslint-config-simplifield": "^1.1.0",
+    "istanbul": "^0.3.21",
+    "mocha": "^2.3.3",
+    "mocha-lcov-reporter": "^1.0.0"
   },
   "dependencies": {
     "yerror": "^1.0.1"
