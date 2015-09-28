@@ -16,6 +16,7 @@ module.exports = {
     'check-set-updates': require('./lib/rules/check-set-updates'),
     'check-push-updates': require('./lib/rules/check-push-updates'),
     'check-pull-updates': require('./lib/rules/check-pull-updates'),
+    'check-addtoset-updates': require('./lib/rules/check-addtoset-updates'),
     'check-deprecated-updates': require('./lib/rules/check-deprecated-updates'),
   },
   rulesConfig: {
@@ -33,6 +34,7 @@ module.exports = {
     'check-set-updates': 2,
     'check-push-updates': 2,
     'check-pull-updates': 2,
+    'check-addtoset-updates': 2,
     'check-deprecated-updates': 2,
   },
 };

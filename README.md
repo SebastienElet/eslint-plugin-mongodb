@@ -162,6 +162,12 @@ Default: `'check-pull-updates': 2`
 
 Check `$pull` update operator usage.
 
+### check-addtoset-updates
+
+Default: `'check-addtoset-updates': 2`
+
+Check `$addToSet` update operator usage and common misuses.
+
 ### check-deprecated-updates
 
 Default: `'check-deprecated-updates': 2`
