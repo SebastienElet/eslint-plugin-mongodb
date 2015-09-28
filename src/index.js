@@ -14,6 +14,8 @@ module.exports = {
     'check-current-date-updates': require('./lib/rules/check-current-date-updates'),
     'check-minmax-updates': require('./lib/rules/check-minmax-updates'),
     'check-set-updates': require('./lib/rules/check-set-updates'),
+    'check-push-updates': require('./lib/rules/check-push-updates'),
+    'check-deprecated-updates': require('./lib/rules/check-deprecated-updates'),
   },
   rulesConfig: {
     'check-insert-calls': 2,
@@ -28,5 +30,7 @@ module.exports = {
     'check-current-date-updates': 2,
     'check-minmax-updates': 2,
     'check-set-updates': 2,
+    'check-push-updates': 2,
+    'check-deprecated-updates': 2,
   },
 };

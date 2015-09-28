@@ -150,6 +150,18 @@ Default: `'check-set-updates': 2`
 
 Check `$set` and `$setOnInsert` update operators usage.
 
+### check-push-updates
+
+Default: `'check-push-updates': 2`
+
+Check `$push` update operator usage and its modifiers.
+
+### check-deprecated-updates
+
+Default: `'check-deprecated-updates': 2`
+
+Check deprecated update operator usage.
+
 ## Contributing
 Feel free to push your code if you agree with publishing under the MIT license.
 
