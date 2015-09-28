@@ -162,6 +162,12 @@ Default: `'check-pull-updates': 2`
 
 Check `$pull` update operator usage.
 
+### check-pop-updates
+
+Default: `'check-pop-updates': 2`
+
+Check `$pop` update operator usage.
+
 ### check-addtoset-updates
 
 Default: `'check-addtoset-updates': 2`
