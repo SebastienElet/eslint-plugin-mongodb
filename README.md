@@ -156,6 +156,12 @@ Default: `'check-push-updates': 2`
 
 Check `$push` update operator usage and its modifiers.
 
+### check-pull-updates
+
+Default: `'check-pull-updates': 2`
+
+Check `$pull` update operator usage.
+
 ### check-deprecated-updates
 
 Default: `'check-deprecated-updates': 2`
