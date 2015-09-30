@@ -29,9 +29,6 @@
     "url": "https://github.com/nfroidure/eslint-plugin-mongoquery/issues"
   },
   "homepage": "https://github.com/nfroidure/eslint-plugin-mongoquery",
-  "peerDependencies": {
-    "eslint": ">=0.8.0"
-  },
   "devDependencies": {
     "coveralls": "^2.11.4",
     "eslint": "^1.5.1",
