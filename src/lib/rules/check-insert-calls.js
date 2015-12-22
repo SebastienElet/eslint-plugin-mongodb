@@ -42,7 +42,7 @@ function eMQCheckInsertCalls(context) {
           ' to have at least 1 argument.');
         return false;
       }
-      if((!utils.nodeIsDynamic(args[0])) && !utils.nodeIsArray(args[0].type)) {
+      if((!utils.nodeIsDynamic(args[0])) && !utils.nodeIsArray(args[0])) {
         context.report(args[0], 'Expected ' + callSource +
           ' call first argument value to be an array.');
         return false;
