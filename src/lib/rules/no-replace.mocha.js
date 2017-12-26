@@ -13,10 +13,14 @@ ruleTester.run('no-replace', rule, {
     "db.collection('users').updateMany({}, hey);",
     "db.collection('users').updateMany({});",
   ],
-  invalid: [{
-    code: "db.collection('users').updateMany({}, { name: 'test' });",
-    errors: [{
-      message: 'Raw update of a complete collection entry.',
-    }],
-  }],
+  invalid: [
+    {
+      code: "db.collection('users').updateMany({}, { name: 'test' });",
+      errors: [
+        {
+          message: 'Raw update of a complete collection entry.',
+        },
+      ],
+    },
+  ],
 });

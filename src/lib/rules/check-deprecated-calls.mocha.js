@@ -12,20 +12,30 @@ ruleTester.run('check-deprecated-calls', rule, {
     "mongoClient.db.collection('users').deleteOne(gen());",
     "mongoClient.db.collection('users').insertOne({});",
   ],
-  invalid: [{
-    code: "db.collection('users').findAndModify();",
-    errors: [{
-      message: 'findAndModify method is deprecated.',
-    }],
-  }, {
-    code: "mongoClient.db.collection('users').update('test', {});",
-    errors: [{
-      message: 'update method is deprecated.',
-    }],
-  }, {
-    code: "mongoClient.db.collection('users').remove([{}]);",
-    errors: [{
-      message: 'remove method is deprecated.',
-    }],
-  }],
+  invalid: [
+    {
+      code: "db.collection('users').findAndModify();",
+      errors: [
+        {
+          message: 'findAndModify method is deprecated.',
+        },
+      ],
+    },
+    {
+      code: "mongoClient.db.collection('users').update('test', {});",
+      errors: [
+        {
+          message: 'update method is deprecated.',
+        },
+      ],
+    },
+    {
+      code: "mongoClient.db.collection('users').remove([{}]);",
+      errors: [
+        {
+          message: 'remove method is deprecated.',
+        },
+      ],
+    },
+  ],
 });

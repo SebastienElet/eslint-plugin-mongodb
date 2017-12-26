@@ -12,15 +12,23 @@ ruleTester.run('check-numeric-updates', rule, {
     "mongoClient.db.collection('users').updateMany({}, { $mul: { test: plop }});", // Computed :(
     "mongoClient.db.collection('users').updateMany({}, { $mul: { qty: 33 * 33 }});", // Computed
   ],
-  invalid: [{
-    code: "db.collection('users').updateMany({}, { $mul: 'test' });",
-    errors: [{
-      message: 'Expected $mul operator value to be an object.',
-    }],
-  }, {
-    code: "mongoClient.db.collection('users').updateMany({}, { $inc: {test: 'test'}});",
-    errors: [{
-      message: '$inc operator require numbers (key: test).',
-    }],
-  }],
+  invalid: [
+    {
+      code: "db.collection('users').updateMany({}, { $mul: 'test' });",
+      errors: [
+        {
+          message: 'Expected $mul operator value to be an object.',
+        },
+      ],
+    },
+    {
+      code:
+        "mongoClient.db.collection('users').updateMany({}, { $inc: {test: 'test'}});",
+      errors: [
+        {
+          message: '$inc operator require numbers (key: test).',
+        },
+      ],
+    },
+  ],
 });
