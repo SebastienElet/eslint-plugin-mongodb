@@ -2,9 +2,9 @@
 
 'use strict';
 
-var YError = require('yerror');
+const YError = require('yerror');
 
-var utils = {
+const utils = {
   CALL_PATTERNS: {
     // See http://docs.mongodb.org/master/reference/method/js-collection/
     QUERY: [
@@ -23,25 +23,23 @@ var utils = {
       /(\.|^)db\.collection\([^\)]+\)\.(remove|update|findAndModify|ensureIndex|findAndRemove|insert|dropAllIndexes)$/,
     ],
   },
-  getAllCallPatterns: getAllCallPatterns,
-  getCallPatterns: getCallPatterns,
-  nodeIsDynamic: nodeIsDynamic,
-  nodeWillBeString: nodeWillBeString,
-  nodeWillBeNumber: nodeWillBeNumber,
-  nodeWillBeBoolean: nodeWillBeBoolean,
-  lookupCall: lookupCall,
-  everyProperties: everyProperties,
-  nodeIsEmptyString: nodeIsEmptyString,
-  nodeIsString: nodeIsString,
-  nodeIsTrue: nodeIsTrue,
-  nodeIsArray: nodeIsArray,
-  nodeIsEmptyArray: nodeIsEmptyArray,
+  getAllCallPatterns,
+  getCallPatterns,
+  nodeIsDynamic,
+  nodeWillBeString,
+  nodeWillBeNumber,
+  nodeWillBeBoolean,
+  lookupCall,
+  everyProperties,
+  nodeIsEmptyString,
+  nodeIsString,
+  nodeIsTrue,
+  nodeIsArray,
+  nodeIsEmptyArray,
 };
 
 function getAllCallPatterns(settings) {
-  return Object.keys(utils.CALL_PATTERNS).reduce(function(patterns, type) {
-    return patterns.concat(utils.getCallPatterns(type.toLowerCase(), settings));
-  }, []);
+  return Object.keys(utils.CALL_PATTERNS).reduce((patterns, type) => patterns.concat(utils.getCallPatterns(type.toLowerCase(), settings)), []);
 }
 
 function getCallPatterns(type, settings) {
@@ -49,9 +47,7 @@ function getCallPatterns(type, settings) {
     settings && settings.mongodb && settings.mongodb.callPatterns &&
     settings.mongodb.callPatterns[type]
   ) {
-    return settings.mongodb.callPatterns[type].map(function(pattern) {
-      return new RegExp(pattern);
-    });
+    return settings.mongodb.callPatterns[type].map(pattern => new RegExp(pattern));
   }
   return utils.CALL_PATTERNS[type.toUpperCase()];
 }
@@ -59,7 +55,7 @@ function getCallPatterns(type, settings) {
 function lookupCall(context, callPatterns, cb) {
   return {
     CallExpression: function(node) {
-      var functionCallSource = context.getSource(node.callee);
+      const functionCallSource = context.getSource(node.callee);
 
       callPatterns.some(function(callPattern) {
         if(callPattern.exec(functionCallSource)) {
@@ -75,14 +71,12 @@ function everyProperties(node, propertyPatterns, cb) {
   if('ObjectExpression' !== node.type) {
     throw new YError('E_BAD_NODE', node.type);
   }
-  return node.properties.every(function(property) {
+  return node.properties.every(property => {
     // Discard computed properties (maybe warn as harmful in another rule?)
     if('Identifier' !== property.key.type) {
       return true;
     }
-    if(propertyPatterns.some(function(propertyPattern) {
-      return !!propertyPattern.exec(property.key.name);
-    })) {
+    if(propertyPatterns.some(propertyPattern => !!propertyPattern.exec(property.key.name))) {
       return cb(property);
     }
     return true;

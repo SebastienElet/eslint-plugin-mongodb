@@ -1,9 +1,9 @@
 'use strict';
 
-var RuleTester = require('eslint').RuleTester;
-var rule = require('./check-numeric-updates');
+const RuleTester = require('eslint').RuleTester;
+const rule = require('./check-numeric-updates');
 
-var ruleTester = new RuleTester();
+const ruleTester = new RuleTester();
 
 ruleTester.run('check-numeric-updates', rule, {
   valid: [

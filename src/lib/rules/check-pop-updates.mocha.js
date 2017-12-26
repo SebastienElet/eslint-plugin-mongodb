@@ -1,9 +1,9 @@
 'use strict';
 
-var RuleTester = require('eslint').RuleTester;
-var rule = require('./check-pop-updates');
+const RuleTester = require('eslint').RuleTester;
+const rule = require('./check-pop-updates');
 
-var ruleTester = new RuleTester();
+const ruleTester = new RuleTester();
 
 ruleTester.run('check-pop-updates', rule, {
   valid: [

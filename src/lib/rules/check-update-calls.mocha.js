@@ -1,9 +1,9 @@
 'use strict';
 
-var RuleTester = require('eslint').RuleTester;
-var rule = require('./check-update-calls');
+const RuleTester = require('eslint').RuleTester;
+const rule = require('./check-update-calls');
 
-var ruleTester = new RuleTester();
+const ruleTester = new RuleTester();
 
 ruleTester.run('check-update-calls', rule, {
   valid: [

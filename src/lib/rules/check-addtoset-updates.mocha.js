@@ -1,9 +1,9 @@
 'use strict';
 
-var RuleTester = require('eslint').RuleTester;
-var rule = require('./check-addtoset-updates');
+const RuleTester = require('eslint').RuleTester;
+const rule = require('./check-addtoset-updates');
 
-var ruleTester = new RuleTester();
+const ruleTester = new RuleTester();
 
 ruleTester.run('check-addtoset-updates', rule, {
   valid: [

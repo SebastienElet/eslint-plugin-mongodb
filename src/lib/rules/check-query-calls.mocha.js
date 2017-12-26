@@ -1,9 +1,9 @@
 'use strict';
 
-var RuleTester = require('eslint').RuleTester;
-var rule = require('./check-query-calls');
+const RuleTester = require('eslint').RuleTester;
+const rule = require('./check-query-calls');
 
-var ruleTester = new RuleTester();
+const ruleTester = new RuleTester();
 
 ruleTester.run('check-query-calls', rule, {
   valid: [

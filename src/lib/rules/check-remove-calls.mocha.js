@@ -1,9 +1,9 @@
 'use strict';
 
-var RuleTester = require('eslint').RuleTester;
-var rule = require('./check-remove-calls');
+const RuleTester = require('eslint').RuleTester;
+const rule = require('./check-remove-calls');
 
-var ruleTester = new RuleTester();
+const ruleTester = new RuleTester();
 
 ruleTester.run('check-remove-calls', rule, {
   valid: [

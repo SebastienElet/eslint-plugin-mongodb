@@ -1,9 +1,9 @@
 'use strict';
 
-var RuleTester = require('eslint').RuleTester;
-var rule = require('./no-replace');
+const RuleTester = require('eslint').RuleTester;
+const rule = require('./no-replace');
 
-var ruleTester = new RuleTester();
+const ruleTester = new RuleTester();
 
 ruleTester.run('no-replace', rule, {
   valid: [

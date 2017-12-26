@@ -1,16 +1,16 @@
 'use strict';
 
-var utils = require('../utils');
+const utils = require('../utils');
 
 function eMQCheckDeprecatedUpdates(context) {
 
   return utils.lookupCall(context, utils.getCallPatterns('update', context.settings),
-    function(callSource, args) {
+    (callSource, args) => {
       if((!args[1]) || 'ObjectExpression' !== args[1].type ||
         !args[1].properties.length) {
         return false;
       }
-      return utils.everyProperties(args[1], [/\$(pushAll|pullAll)/], function(property) {
+      return utils.everyProperties(args[1], [/\$(pushAll|pullAll)/], property => {
         if('$pushAll' === property.key.name) {
           context.report(property, 'The $pushAll operator is deprecated, ' +
             'use the $push one with the $each modifier.');

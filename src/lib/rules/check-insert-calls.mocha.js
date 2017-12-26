@@ -1,9 +1,9 @@
 'use strict';
 
-var RuleTester = require('eslint').RuleTester;
-var rule = require('./check-insert-calls');
+const RuleTester = require('eslint').RuleTester;
+const rule = require('./check-insert-calls');
 
-var ruleTester = new RuleTester();
+const ruleTester = new RuleTester();
 
 ruleTester.run('check-insert-calls', rule, {
   valid: [

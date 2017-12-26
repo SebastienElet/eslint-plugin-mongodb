@@ -1,9 +1,9 @@
 'use strict';
 
-var RuleTester = require('eslint').RuleTester;
-var rule = require('./check-current-date-updates');
+const RuleTester = require('eslint').RuleTester;
+const rule = require('./check-current-date-updates');
 
-var ruleTester = new RuleTester();
+const ruleTester = new RuleTester();
 
 ruleTester.run('check-current-date-updates', rule, {
   valid: [{
