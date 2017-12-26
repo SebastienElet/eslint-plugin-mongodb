@@ -30,14 +30,14 @@
   },
   "homepage": "https://github.com/nfroidure/eslint-plugin-mongoquery",
   "devDependencies": {
-    "coveralls": "^2.11.4",
-    "eslint": "^1.5.1",
-    "eslint-config-simplifield": "^1.1.0",
-    "istanbul": "^0.3.21",
-    "mocha": "^2.3.3",
+    "coveralls": "^3.0.0",
+    "eslint": "4",
+    "eslint-config-simplifield": "^7.0.1",
+    "istanbul": "^0.4.5",
+    "mocha": "^4.0.1",
     "mocha-lcov-reporter": "^1.0.0"
   },
   "dependencies": {
-    "yerror": "^1.0.1"
+    "yerror": "^2.1.0"
   }
 }

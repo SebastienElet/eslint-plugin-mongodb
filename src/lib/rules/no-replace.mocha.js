@@ -1,10 +1,9 @@
 'use strict';
 
-var linter = require('eslint').linter;
 var RuleTester = require('eslint').RuleTester;
 var rule = require('./no-replace');
 
-var ruleTester = new RuleTester(linter);
+var ruleTester = new RuleTester();
 
 ruleTester.run('no-replace', rule, {
   valid: [

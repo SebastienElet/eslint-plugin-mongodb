@@ -1,10 +1,9 @@
 'use strict';
 
-var linter = require('eslint').linter;
 var RuleTester = require('eslint').RuleTester;
 var rule = require('./check-deprecated-updates');
 
-var ruleTester = new RuleTester(linter);
+var ruleTester = new RuleTester();
 
 ruleTester.run('check-deprecated-updates', rule, {
   valid: [],
