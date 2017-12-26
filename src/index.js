@@ -1,5 +1,36 @@
 'use strict';
 
+const rulesConfig = {
+  'check-insert-calls': 2,
+  'check-update-calls': 2,
+  'check-query-calls': 2,
+  'check-remove-calls': 2,
+  'check-deprecated-calls': 2,
+  'no-replace': 1,
+  'check-numeric-updates': 2,
+  'check-rename-updates': 2,
+  'check-unset-updates': 2,
+  'check-current-date-updates': 2,
+  'check-minmax-updates': 2,
+  'check-set-updates': 2,
+  'check-push-updates': 2,
+  'check-pull-updates': 2,
+  'check-pop-updates': 2,
+  'check-addtoset-updates': 2,
+  'check-deprecated-updates': 2,
+};
+
+const addPrefix = rules => {
+  const result = {};
+
+  for (const key in rules) {
+    if (rules.hasOwnProperty(key)) {
+      result[`mongodb/${key}`] = rules[key];
+    }
+  }
+  return result;
+};
+
 module.exports = {
   rules: {
     'check-insert-calls': require('./lib/rules/check-insert-calls'),
@@ -20,23 +51,15 @@ module.exports = {
     'check-addtoset-updates': require('./lib/rules/check-addtoset-updates'),
     'check-deprecated-updates': require('./lib/rules/check-deprecated-updates'),
   },
-  rulesConfig: {
-    'check-insert-calls': 2,
-    'check-update-calls': 2,
-    'check-query-calls': 2,
-    'check-remove-calls': 2,
-    'check-deprecated-calls': 2,
-    'no-replace': 1,
-    'check-numeric-updates': 2,
-    'check-rename-updates': 2,
-    'check-unset-updates': 2,
-    'check-current-date-updates': 2,
-    'check-minmax-updates': 2,
-    'check-set-updates': 2,
-    'check-push-updates': 2,
-    'check-pull-updates': 2,
-    'check-pop-updates': 2,
-    'check-addtoset-updates': 2,
-    'check-deprecated-updates': 2,
+  rulesConfig,
+  configs: {
+    recommended: {
+      plugins: ['mongodb'],
+      rules: rulesConfig,
+    },
+    all: {
+      plugins: ['mongodb'],
+      rules: addPrefix(rulesConfig),
+    },
   },
 };
