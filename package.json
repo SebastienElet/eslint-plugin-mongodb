@@ -9,6 +9,7 @@
     "cover": "istanbul cover --report html _mocha -- src/**/*.mocha.js -R spec -t 5000",
     "lint": "eslint src/**/*.js",
     "preversion": "npm run lint && npm test",
+    "prettify": "prettier --write 'src/**/*.js'",
     "cli": "env NPM_RUN_CLI=1"
   },
   "repository": {
@@ -30,14 +31,15 @@
   },
   "homepage": "https://github.com/nfroidure/eslint-plugin-mongoquery",
   "devDependencies": {
-    "coveralls": "^2.11.4",
-    "eslint": "^1.5.1",
-    "eslint-config-simplifield": "^1.1.0",
-    "istanbul": "^0.3.21",
-    "mocha": "^2.3.3",
-    "mocha-lcov-reporter": "^1.0.0"
+    "coveralls": "^3.0.0",
+    "eslint": "4",
+    "eslint-config-simplifield": "^7.0.1",
+    "istanbul": "^0.4.5",
+    "mocha": "^4.0.1",
+    "mocha-lcov-reporter": "^1.0.0",
+    "prettier": "^1.9.2"
   },
   "dependencies": {
-    "yerror": "^1.0.1"
+    "yerror": "^2.1.0"
   }
 }

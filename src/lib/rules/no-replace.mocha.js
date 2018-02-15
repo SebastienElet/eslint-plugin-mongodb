@@ -1,10 +1,9 @@
 'use strict';
 
-var linter = require('eslint').linter;
-var RuleTester = require('eslint').RuleTester;
-var rule = require('./no-replace');
+const RuleTester = require('eslint').RuleTester;
+const rule = require('./no-replace');
 
-var ruleTester = new RuleTester(linter);
+const ruleTester = new RuleTester();
 
 ruleTester.run('no-replace', rule, {
   valid: [
@@ -14,10 +13,14 @@ ruleTester.run('no-replace', rule, {
     "db.collection('users').updateMany({}, hey);",
     "db.collection('users').updateMany({});",
   ],
-  invalid: [{
-    code: "db.collection('users').updateMany({}, { name: 'test' });",
-    errors: [{
-      message: 'Raw update of a complete collection entry.',
-    }],
-  }],
+  invalid: [
+    {
+      code: "db.collection('users').updateMany({}, { name: 'test' });",
+      errors: [
+        {
+          message: 'Raw update of a complete collection entry.',
+        },
+      ],
+    },
+  ],
 });
