@@ -66,6 +66,8 @@ function lookupCall(context, callPatterns, cb) {
           cb.call(this, functionCallSource, node.arguments, node);
           return true;
         }
+
+        return false;
       });
     },
   };
