@@ -61,11 +61,12 @@ function lookupCall(context, callPatterns, cb) {
     CallExpression: function(node) {
       const functionCallSource = context.getSource(node.callee);
 
-      callPatterns.some(function(callPattern) {
+      return callPatterns.some(function(callPattern) {
         if (callPattern.exec(functionCallSource)) {
           cb.call(this, functionCallSource, node.arguments, node);
           return true;
         }
+        return false;
       });
     },
   };
